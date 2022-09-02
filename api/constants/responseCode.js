@@ -1,0 +1,5 @@
+module.exports = {
+  OK: 1000,
+  ERROR_INVALID_PARAMS: 2000,
+  ERROR_INTERNAL: 2001,
+};
