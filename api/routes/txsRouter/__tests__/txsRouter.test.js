@@ -14,8 +14,13 @@ describe('txs route tests', () => {
           return done(err);
         }
         expect(res.body.code).toEqual(responseCode.OK);
-        expect(res.body?.data?.list).toBeDefined();
-        expect(res.body.data.list.length).toBeGreaterThan(0);
+        const list = res.body?.data?.list || [];
+        expect(list).toBeDefined();
+        expect(list.length).toBeGreaterThan(0);
+        const [firstItem] = list;
+        expect(firstItem).toBeDefined();
+        expect(firstItem?.txHash).toBeNonEmptyString();
+        expect(firstItem?.blockNumber).toBeNonEmptyString();
         return done();
       });
   }, 10000);
